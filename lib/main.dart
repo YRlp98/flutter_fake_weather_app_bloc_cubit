@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit_bloc_tutorial/pages/weather_search_page.dart';
 
@@ -10,5 +12,15 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: WeatherSearchPage(),
     );
+  }
+}
+
+class MyChangeNotifier extends ChangeNotifier {
+  int field1;
+  String field2;
+
+  void changeState() {
+    field2 = 'New Value';
+    notifyListeners();
   }
 }
