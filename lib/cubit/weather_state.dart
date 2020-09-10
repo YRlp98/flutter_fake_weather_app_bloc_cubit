@@ -14,18 +14,18 @@ class WeatherLoading extends WeatherState {
 }
 
 class WeatherLoaded extends WeatherState {
-  final String we;
-  const WeatherLoaded(this.message);
+  final Weather weather;
+  const WeatherLoaded(this.weather);
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is WeatherLoaded && o.message == message;
+    return o is WeatherLoaded && o.weather == weather;
   }
 
   @override
-  int get hashCode => message.hashCode;
+  int get hashCode => weather.hashCode;
 }
 
 class WeatherError extends WeatherState {
