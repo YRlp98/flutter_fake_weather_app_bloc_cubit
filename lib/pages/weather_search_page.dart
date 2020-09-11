@@ -18,7 +18,17 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
       body: Container(
           padding: EdgeInsets.symmetric(vertical: 16),
           alignment: Alignment.center,
-          child: BlocBuilder<WeatherCubit, WeatherState>(
+          child: BlocConsumer<WeatherCubit, WeatherState>(
+            // ? BlocConsumer contains BlocBuilder and BlocListener
+            listener: (context, state) {
+              if (state is WeatherError) {
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.message),
+                  ),
+                );
+              }
+            },
             builder: (context, state) {
               if (state is WeatherInitial) {
                 return buildInitialInput();
