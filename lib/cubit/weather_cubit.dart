@@ -16,7 +16,8 @@ class WeatherCubit extends Cubit<WeatherState> {
       final weather = await _weatherRepository.fetchWeather(cityName);
       emit(WeatherLoaded(weather));
     } on NetworkException {
-      emit(WeatherError("Couldn't fetch weather. Is the device online?!"));
+      emit(
+          const WeatherError("Couldn't fetch weather. Is the device online?!"));
     }
   }
 }
